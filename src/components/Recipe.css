@@ -1,0 +1,167 @@
+.recipe-container {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.part {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.img {
+  width: 30%;
+  min-width: 250px;
+  perspective: 800px;
+}
+
+.img img {
+  width: 100%;
+  max-width: 15rem;
+  margin-top: 1.5rem;
+  border-radius: 5%;
+  border: 2px solid #a19898;
+  transition: transform 3s ease;
+}
+
+.img img:hover {
+  transform: translateZ(80px);
+  border: 2px solid #0ff;
+}
+
+.details {
+  width: 60%;
+  min-width: 250px;
+}
+
+/* Button Styling */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  padding: 10px 22px;
+  margin: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  box-shadow: var(--btn-shadow);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--btn-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--btn-hover-shadow);
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  background-color: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+.btn:active::after {
+  top: var(--ripple-y, 50%);
+  left: var(--ripple-x, 50%);
+  width: 200%;
+  height: 200%;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Light Mode Variables */
+:root {
+  --btn-bg: #4a90e2;
+  --btn-hover: #357bd8;
+  --btn-text: #ffffff;
+  --btn-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --btn-hover-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --btn-bg: #1f6feb;
+    --btn-hover: #3b82f6;
+    --btn-text: #ffffff;
+    --btn-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    --btn-hover-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
+  }
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .btn-icon {
+  transform: scale(1.1);
+}
+
+.ingredient {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.trend {
+  margin-top: 2rem;
+}
+
+/* ✅ Responsive Design */
+@media (max-width: 768px) {
+  .part {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .img,
+  .details {
+    width: 100%;
+    text-align: center;
+  }
+
+  .img img {
+    max-width: 90%;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ingredient {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .btn-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
